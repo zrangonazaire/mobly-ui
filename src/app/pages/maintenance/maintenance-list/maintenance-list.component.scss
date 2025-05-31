@@ -1,0 +1,11 @@
+.accordion-button {
+    font-weight: 500;
+  
+    &:not(.collapsed) {
+      background-color: rgba(0, 123, 255, 0.1);
+    }
+  }
+  
+  .badge {
+    min-width: 80px;
+  }

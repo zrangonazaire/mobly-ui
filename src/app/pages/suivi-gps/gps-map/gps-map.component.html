@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="card">
+    <div class="card-header">
+      <h4>Suivi GPS en temps réel</h4>
+    </div>
+    <div class="card-body p-0">
+      <div id="map" class="map-container"></div>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex justify-content-between">
+        <span class="text-muted">Dernière mise à jour: {{ 'now' | date:'dd/MM/yyyy HH:mm' }}</span>
+        <button class="btn btn-sm btn-outline-primary">
+          Actualiser
+        </button>
+      </div>
+    </div>
+  </div>

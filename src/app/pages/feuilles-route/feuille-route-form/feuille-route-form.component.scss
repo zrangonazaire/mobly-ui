@@ -1,0 +1,12 @@
+.voyage-card {
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      background-color: #e9ecef;
+    }
+  }
+  
+  .form-label {
+    font-weight: 500;
+  }

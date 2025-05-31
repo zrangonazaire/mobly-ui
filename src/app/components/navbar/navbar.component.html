@@ -1,0 +1,108 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary modern-navbar">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/dashboard">
+      <i class="bi bi-building me-2"></i>
+      <span>GestFlotPro</span>
+    </a>
+
+    <!-- Bouton mobile -->
+    <button class="navbar-toggler" type="button" 
+            data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenu du menu -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+            <i class="bi bi-speedometer2 me-1"></i> Dashboard
+          </a>
+        </li>
+
+        <!-- Engins -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/engins" routerLinkActive="active">
+            <i class="bi bi-truck me-1"></i> Engins
+          </a>
+        </li>
+
+        <!-- Feuilles de route -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/feuilles-route" routerLinkActive="active">
+            <i class="bi bi-clipboard-check me-1"></i> Feuilles de route
+          </a>
+        </li>
+
+        <!-- Maintenance -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/maintenance" routerLinkActive="active">
+            <i class="bi bi-tools me-1"></i> Maintenance
+          </a>
+        </li>
+
+        <!-- Facturation - Menu déroulant -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="facturationDropdown" 
+             role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-receipt me-1"></i> Facturation
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="facturationDropdown">
+            <li>
+              <a class="dropdown-item" routerLink="/facturation/devis">
+                <i class="bi bi-file-earmark-text me-2"></i> Devis
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/facturation/factures">
+                <i class="bi bi-file-earmark-check me-2"></i> Factures
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item" routerLink="/facturation/statistiques">
+                <i class="bi bi-graph-up me-2"></i> Statistiques
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Suivi GPS -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/suivi-gps" routerLinkActive="active">
+            <i class="bi bi-geo-alt me-1"></i> Suivi GPS
+          </a>
+        </li>
+      </ul>
+
+      <!-- Section utilisateur -->
+      <div class="d-flex">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" 
+               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle me-1"></i> 
+              {{ authService.getCurrentUser()?.nom || 'Utilisateur' }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                <a class="dropdown-item" routerLink="/parametres">
+                  <i class="bi bi-gear me-2"></i> Paramètres
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" (click)="logout()">
+                  <i class="bi bi-box-arrow-right me-2"></i> Déconnexion
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

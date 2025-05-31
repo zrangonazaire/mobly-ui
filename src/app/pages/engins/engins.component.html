@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <h3>Gestion des Engins</h3>
+      <a routerLink="new" class="btn btn-primary">+ Ajouter</a>
+    </div>
+    
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Modèle</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let engin of engins">
+            <td>{{ engin.id }}</td>
+            <td>{{ engin.type }}</td>
+            <td>{{ engin.modele }}</td>
+            <td>{{ engin.statut }}</td>
+            <td>
+              <div class="btn-group">
+                <a [routerLink]="['edit', engin.id]" class="btn btn-sm btn-warning">Modifier</a>
+                <button (click)="delete(engin.id)" class="btn btn-sm btn-danger">Supprimer</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

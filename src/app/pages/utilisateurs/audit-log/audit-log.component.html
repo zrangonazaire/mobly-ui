@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header">
+      <h4>Journal des activités</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Date/Heure</th>
+              <th>Utilisateur</th>
+              <th>Action</th>
+              <th>Détails</th>
+              <th>Adresse IP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let log of paginatedLogs">
+              <td>{{ log.timestamp | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td>{{ log.username }}</td>
+              <td>
+                <span class="badge bg-{{getActionClass(log.action)}}">
+                  {{ log.action }}
+                </span>
+              </td>
+              <td>{{ log.details }}</td>
+              <td>{{ log.ipAddress }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="d-flex justify-content-center mt-3">
+        <ngb-pagination 
+          [(page)]="page" 
+          [pageSize]="pageSize" 
+          [collectionSize]="logs.length"
+          [maxSize]="5">
+        </ngb-pagination>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,54 @@
+/* Correction du tableau */
+.p-datatable {
+    width: 100%;
+    margin: 1rem 0;
+    
+    .p-datatable-thead > tr > th {
+        background: #f8f9fa;
+        color: #495057;
+        font-weight: 600;
+        padding: 1rem;
+        border: 1px solid #e9ecef;
+    }
+    
+    .p-datatable-tbody > tr > td {
+        padding: 1rem;
+        border: 1px solid #e9ecef;
+        vertical-align: middle;
+        
+        &:first-child {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+    }
+    
+    .p-paginator {
+        margin-top: 1rem;
+        background: transparent;
+        border: none;
+    }
+}
+
+/* Badges de statut */
+.statut-badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    
+    &.statut-planifiée {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+    
+    &.statut-en-cours {
+        background-color: #cce5ff;
+        color: #004085;
+    }
+    
+    &.statut-terminée {
+        background-color: #d4edda;
+        color: #155724;
+    }
+}

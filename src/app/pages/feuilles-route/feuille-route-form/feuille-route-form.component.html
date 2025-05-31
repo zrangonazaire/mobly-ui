@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-header">
+      <h4>Nouvelle feuille de route</h4>
+    </div>
+    <div class="card-body">
+      <form #form="ngForm" (ngSubmit)="soumettreFeuille()">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Engin</label>
+            <select class="form-select" [(ngModel)]="nouvelleFeuille.enginId" name="enginId" required>
+              <option *ngFor="let engin of engins" [value]="engin.id">{{engin.type}} - {{engin.modele}}</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Chauffeur</label>
+            <select class="form-select" [(ngModel)]="nouvelleFeuille.chauffeurId" name="chauffeurId" required>
+              <option *ngFor="let chauffeur of chauffeurs" [value]="chauffeur.id">{{chauffeur.nom}}</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label">Date et heure de départ</label>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="datetime-local" class="form-control" [(ngModel)]="nouvelleFeuille.dateDepart" name="dateDepart" required>
+            </div>
+          </div>
+        </div>
+  
+        <h5 class="mt-4">Voyages</h5>
+        <div *ngFor="let voyage of nouvelleFeuille.voyages; let i = index" class="voyage-card mb-3 p-3 border rounded">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label">Point de départ</label>
+              <input type="text" class="form-control" [(ngModel)]="voyage.depart" [name]="'depart'+i" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Point d'arrivée</label>
+              <input type="text" class="form-control" [(ngModel)]="voyage.arrivee" [name]="'arrivee'+i" required>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Distance (km)</label>
+              <input type="number" class="form-control" [(ngModel)]="voyage.distance" [name]="'distance'+i" required>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Cargaison</label>
+              <input type="text" class="form-control" [(ngModel)]="voyage.cargaison" [name]="'cargaison'+i" required>
+            </div>
+          </div>
+        </div>
+  
+        <button type="button" class="btn btn-outline-primary me-2" (click)="ajouterVoyage()">
+          + Ajouter un voyage
+        </button>
+  
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+          Enregistrer la feuille de route
+        </button>
+      </form>
+    </div>
+  </div>

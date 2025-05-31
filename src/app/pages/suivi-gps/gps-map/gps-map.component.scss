@@ -1,0 +1,11 @@
+.map-container {
+    height: 500px;
+    width: 100%;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+  
+  .leaflet-popup-content {
+    small {
+      color: #6c757d;
+    }
+  }

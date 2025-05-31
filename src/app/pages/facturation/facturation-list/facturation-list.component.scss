@@ -1,0 +1,17 @@
+.table {
+    th {
+      position: sticky;
+      top: 0;
+      background-color: #f8f9fa;
+      z-index: 10;
+    }
+  
+    td {
+      vertical-align: middle;
+    }
+  }
+  
+  .badge {
+    min-width: 80px;
+    padding: 0.5em;
+  }

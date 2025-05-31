@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="card">
+    <h1>Feuilles de Route</h1>
+    <table class="table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Numéro</th>
+                <th>Engin</th>
+                <th>Chauffeur</th>
+                <th>Date départ</th>
+                <th>Date retour</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        
+            <tr *ngFor="let routeSheet of feuillesRoute">
+                <td>{{routeSheet.id}}</td>
+                <td>{{engin?.modele}}</td>
+                <td>{{user?.nom}}</td>
+                <td>{{routeSheet.dateDepart | date:'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{routeSheet.dateRetour | date:'dd/MM/yyyy HH:mm'}}</td>
+                <td>
+                    <span [class]="'statut-badge statut-' + routeSheet.statut.toLowerCase().replace(' ', '-')">
+                        {{routeSheet.statut}}
+                    </span>
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-sm btn-warning">Modifier</a>
+                        <button class="btn btn-sm btn-danger">Supprimer</button>
+                      </div>
+                </td>
+            </tr>
+       
+    </table>
+    <div class="flex justify-content-end mt-3">
+        <button pButton icon="pi pi-plus" label="Nouvelle feuille de route" 
+                [routerLink]="['/operations/route-sheets/new']"></button>
+    </div>
+</div>
