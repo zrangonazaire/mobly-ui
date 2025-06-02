@@ -1,13 +1,15 @@
-<div class="container mt-5">
+
+  <div class="login-container">
+  <div class="container py-5">
     <div class="row justify-content-center">
       <div class="col-md-6 col-lg-4">
-        <div class="card shadow">
+        <div class="card shadow-lg">
           <div class="card-header bg-primary text-white text-center">
-            <h3>Connexion</h3>
+            <h3 class="mb-0">Authentification </h3>
           </div>
           <div class="card-body">
             <form (ngSubmit)="login()">
-              <div *ngIf="errorMessage" class="alert alert-danger">
+               <div *ngIf="errorMessage" class="alert alert-danger">
                 {{ errorMessage }}
               </div>
               <div class="mb-3">
@@ -19,9 +21,11 @@
                 <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" required>
               </div>
               <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+          
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

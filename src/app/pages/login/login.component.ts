@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
@@ -15,11 +15,26 @@ export class LoginComponent {
   username = '';
   password = '';
   errorMessage = '';
+  loginForm: FormGroup;
 
+
+   
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      console.log('Form submitted:', this.loginForm.value);
+      // Ajoutez ici votre logique d'authentification
+    }
+  }
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private fb: FormBuilder
+  ) { this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
 
   login() {
     if (this.authService.login(this.username, this.password)) {

@@ -1,0 +1,205 @@
+.sidebar-modern {
+  width: 300px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+
+  .sidebar-brand {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: #f8f9fa;
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #3a7afe, #5d9aff);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      font-size: 18px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+  }
+
+  .sidebar-menu {
+    flex: 1;
+    padding: 10px 0;
+    overflow-y: auto;
+
+    .menu-header {
+      padding: 12px 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 15px;
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .menu-item {
+        position: relative;
+        cursor: pointer;
+
+        > a {
+          display: flex;
+          align-items: center;
+          padding: 12px 20px;
+          color: #495057;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          position: relative;
+          border-left: 3px solid transparent;
+
+          &:hover {
+            color: #3a7afe;
+            background: rgba(58, 122, 254, 0.05);
+          }
+
+          .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.1rem;
+            color: #6c757d;
+            transition: all 0.3s ease;
+          }
+
+          .menu-text {
+            flex: 1;
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+
+          .menu-arrow {
+            color: #adb5bd;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+          }
+        }
+
+        &.expanded {
+          > a {
+            .menu-arrow {
+              transform: rotate(180deg);
+            }
+          }
+
+          > .submenu {
+            max-height: 1000px;
+            overflow: visible;
+          }
+        }
+
+        .submenu {
+          list-style: none;
+          padding: 0;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+          background-color: #f8fafc;
+
+          li {
+            a {
+              display: flex;
+              align-items: center;
+              padding: 10px 20px 10px 60px;
+              color: #6c757d;
+              text-decoration: none;
+              font-size: 0.85rem;
+              transition: all 0.2s ease;
+              position: relative;
+
+              &:hover {
+                color: #3a7afe;
+                background: rgba(58, 122, 254, 0.05);
+              }
+
+              &.active {
+                color: #3a7afe;
+                font-weight: 500;
+              }
+
+              i {
+                font-size: 0.9rem;
+                margin-right: 8px;
+              }
+
+              &::before {
+                content: '';
+                position: absolute;
+                left: 40px;
+                top: 50%;
+                width: 10px;
+                height: 1px;
+                background: #adb5bd;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: #f8f9fa;
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+
+      .user-avatar {
+        width: 36px;
+        height: 36px;
+        background: #e9ecef;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        color: #495057;
+        font-size: 1.2rem;
+      }
+
+      .user-info {
+        .user-name {
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #2c3e50;
+          margin-bottom: 2px;
+        }
+
+        .user-role {
+          font-size: 0.7rem;
+          color: #6c757d;
+        }
+      }
+    }
+  }
+}

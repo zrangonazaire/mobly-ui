@@ -5,11 +5,12 @@ import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { map } from 'rxjs';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, NgbProgressbarModule, RouterModule,NavbarComponent],
+  imports: [CommonModule, NgbProgressbarModule, RouterModule,NavbarComponent,SidebarComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

@@ -1,1 +1,250 @@
-<p>sidebar works!</p>
+<div class="sidebar-modern">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <i class="bi bi-gear-wide-connected"></i>
+    </div>
+    <h2>Gestion</h2>
+  </div>
+
+  <div class="sidebar-menu">
+    <ul class="menu-items">
+        <li class="menu-header"> Gestion des Opérations</li>
+        <li class="menu-header"> Gestion des Dossiers</li>
+        <li class="menu-header"> Gestion du Carburant</li>
+        <li class="menu-header"> Gestion Atelier</li>
+      <!-- Section Atelier -->
+     
+      
+      <!-- Déclaration de panne -->
+      <li class="menu-item has-submenu" (click)="toggleSubmenu($event)">
+        <a>
+          <div class="menu-icon">
+            <i class="bi bi-exclamation-triangle"></i>
+          </div>
+          <span class="menu-text">Déclaration de panne</span>
+          <div class="menu-arrow">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </a>
+        <ul class="submenu">
+          <li><a routerLink="/atelier/engins-transport" routerLinkActive="active">
+            <i class="bi bi-truck me-2"></i> Engins Transport/Manutention
+          </a></li>
+          <li><a routerLink="/atelier/vehicules-legers" routerLinkActive="active">
+            <i class="bi bi-car me-2"></i> Véhicules légers
+          </a></li>
+          <li><a routerLink="/atelier/engins-autres" routerLinkActive="active">
+            <i class="bi bi-lightning-charge me-2"></i> Autres engins
+          </a></li>
+          <li><a routerLink="/atelier/liste-pannes" routerLinkActive="active">
+            <i class="bi bi-list-check me-2"></i> Liste des pannes
+          </a></li>
+        </ul>
+      </li>
+
+      <!-- Maintenance curative -->
+      <li class="menu-item has-submenu" (click)="toggleSubmenu($event)">
+        <a>
+          <div class="menu-icon">
+            <i class="bi bi-tools"></i>
+          </div>
+          <span class="menu-text">Maintenance curative</span>
+          <div class="menu-arrow">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </a>
+        <ul class="submenu">
+          <li><a routerLink="/atelier/panne-diagnostique" routerLinkActive="active">
+            <i class="bi bi-hourglass me-2"></i> Pannes en diagnostic
+          </a></li>
+          <li><a routerLink="/atelier/diagnostique-confirmation" routerLinkActive="active">
+            <i class="bi bi-clipboard-check me-2"></i> Diagnostic à confirmer
+          </a></li>
+          <li><a routerLink="/atelier/ordre-reparation" routerLinkActive="active">
+            <i class="bi bi-wrench me-2"></i> Ordre de réparation
+          </a></li>
+          <li><a routerLink="/atelier/numerotation" routerLinkActive="active">
+            <i class="bi bi-123 me-2"></i> Numérotation
+          </a></li>
+        </ul>
+      </li>
+
+      <!-- Maintenance préventive -->
+      <li class="menu-item has-submenu" (click)="toggleSubmenu($event)">
+        <a>
+          <div class="menu-icon">
+            <i class="bi bi-calendar-check"></i>
+          </div>
+          <span class="menu-text">Maintenance préventive</span>
+          <div class="menu-arrow">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </a>
+        <ul class="submenu">
+          <li><a routerLink="/atelier/calendrier-maintenance" routerLinkActive="active">
+            <i class="bi bi-calendar-event me-2"></i> Calendrier maintenance
+          </a></li>
+          <li><a routerLink="/atelier/engins-alerte" routerLinkActive="active">
+            <i class="bi bi-exclamation-octagon me-2"></i> Engins en alerte
+          </a></li>
+        </ul>
+      </li>
+
+      <!-- Gestion de Stock -->
+      <li class="menu-item has-submenu" (click)="toggleSubmenu($event)">
+        <a>
+          <div class="menu-icon">
+            <i class="bi bi-box-seam"></i>
+          </div>
+          <span class="menu-text">Gestion de Stock</span>
+          <div class="menu-arrow">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </a>
+        <ul class="submenu">
+          <li><a routerLink="/atelier/reception-stock" routerLinkActive="active">
+            <i class="bi bi-box-arrow-in-down me-2"></i> Réception/Entrée
+          </a></li>
+          <li><a routerLink="/atelier/etat-stock" routerLinkActive="active">
+            <i class="bi bi-boxes me-2"></i> Stock
+          </a></li>
+          <li><a routerLink="/atelier/sortie-stock" routerLinkActive="active">
+            <i class="bi bi-box-arrow-up me-2"></i> Sortie
+          </a></li>
+          <li><a routerLink="/atelier/inventaire" routerLinkActive="active">
+            <i class="bi bi-clipboard-data me-2"></i> Inventaire
+          </a></li>
+        </ul>
+      </li>
+
+      <!-- Section Matériel -->
+      <li class="menu-header">Gestion du Matériel</li>
+
+      <!-- Engin -->
+      <li class="menu-item has-submenu" (click)="toggleSubmenu($event)">
+        <a>
+          <div class="menu-icon">
+            <i class="bi bi-truck-front"></i>
+          </div>
+          <span class="menu-text">Engin</span>
+          <div class="menu-arrow">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </a>
+        <ul class="submenu">
+          <li><a routerLink="/materiel/engins-transport" routerLinkActive="active">
+            <i class="bi bi-truck me-2"></i> Engins Transport/Manutention
+          </a></li>
+          <li><a routerLink="/materiel/vehicules-legers" routerLinkActive="active">
+            <i class="bi bi-car me-2"></i> Véhicules légers
+          </a></li>
+          <li><a routerLink="/materiel/engins-autres" routerLinkActive="active">
+            <i class="bi bi-lightning-charge me-2"></i> Autres engins
+          </a></li>
+          <li><a routerLink="/materiel/liste-pannes" routerLinkActive="active">
+            <i class="bi bi-list-check me-2"></i> Liste des pannes
+          </a></li>
+        </ul>
+      </li>
+
+      <!-- Demande de Matériel -->
+      <li class="menu-item has-submenu" (click)="toggleSubmenu($event)">
+        <a>
+          <div class="menu-icon">
+            <i class="bi bi-cart-plus"></i>
+          </div>
+          <span class="menu-text">Demande de Matériel</span>
+          <div class="menu-arrow">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </a>
+        <ul class="submenu">
+          <li><a routerLink="/materiel/creation-chantier" routerLinkActive="active">
+            <i class="bi bi-plus-circle me-2"></i> Création chantier
+          </a></li>
+          <li><a routerLink="/materiel/demande-location" routerLinkActive="active">
+            <i class="bi bi-building-add me-2"></i> Demande location
+          </a></li>
+          <li><a routerLink="/materiel/validation-responsable" routerLinkActive="active">
+            <i class="bi bi-person-check me-2"></i> Validation responsable
+          </a></li>
+          <li><a routerLink="/materiel/validation-location" routerLinkActive="active">
+            <i class="bi bi-check2-square me-2"></i> Validation location
+          </a></li>
+          <li><a routerLink="/materiel/position-demande" routerLinkActive="active">
+            <i class="bi bi-info-circle me-2"></i> Position demande
+          </a></li>
+        </ul>
+      </li>
+
+      <!-- Mis à disposition -->
+      <li class="menu-item has-submenu" (click)="toggleSubmenu($event)">
+        <a>
+          <div class="menu-icon">
+            <i class="bi bi-clipboard2-check"></i>
+          </div>
+          <span class="menu-text">Mis à disposition</span>
+          <div class="menu-arrow">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </a>
+        <ul class="submenu">
+          <li><a routerLink="/materiel/affectation-tracteur" routerLinkActive="active">
+            <i class="bi bi-truck me-2"></i> Affectation tracteur
+          </a></li>
+          <li><a routerLink="/materiel/affectation-remorque" routerLinkActive="active">
+            <i class="bi bi-trailer me-2"></i> Affectation remorque
+          </a></li>
+          <li><a routerLink="/materiel/compteur-affectation" routerLinkActive="active">
+            <i class="bi bi-speedometer2 me-2"></i> Compteur par affectation
+          </a></li>
+          <li><a routerLink="/materiel/compteur-journalier" routerLinkActive="active">
+            <i class="bi bi-calendar-day me-2"></i> Compteur journaliers
+          </a></li>
+        </ul>
+      </li>
+
+      <!-- Primes chauffeurs -->
+      <li class="menu-item has-submenu" (click)="toggleSubmenu($event)">
+        <a>
+          <div class="menu-icon">
+            <i class="bi bi-award"></i>
+          </div>
+          <span class="menu-text">Primes chauffeurs</span>
+          <div class="menu-arrow">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </a>
+        <ul class="submenu">
+          <li><a routerLink="/materiel/nouvelle-evaluation" routerLinkActive="active">
+            <i class="bi bi-plus-circle me-2"></i> Nouvelle évaluation
+          </a></li>
+          <li><a routerLink="/materiel/validation-responsable" routerLinkActive="active">
+            <i class="bi bi-person-check me-2"></i> Validation responsable
+          </a></li>
+          <li><a routerLink="/materiel/validation-dt" routerLinkActive="active">
+            <i class="bi bi-file-earmark-check me-2"></i> Validation DT
+          </a></li>
+          <li><a routerLink="/materiel/rapport-rh" routerLinkActive="active">
+            <i class="bi bi-file-earmark-text me-2"></i> Rapport RH
+          </a></li>
+          <li><a routerLink="/materiel/position-evaluation" routerLinkActive="active">
+            <i class="bi bi-info-circle me-2"></i> Position évaluation
+          </a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="user-profile">
+      <div class="user-avatar">
+        <i class="bi bi-person-circle"></i>
+      </div>
+      <div class="user-info">
+        <div class="user-name">Administrateur</div>
+        <div class="user-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</div>
