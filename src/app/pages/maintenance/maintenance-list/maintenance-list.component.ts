@@ -4,11 +4,12 @@ import { DataService } from '../../../services/data.service';
 import { NgbAccordionModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from '../../../components/navbar/navbar.component';
+import { SidebarComponent } from '../../../components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-maintenance-list',
   standalone: true,
-  imports: [CommonModule, NgbAccordionModule, NgbAlertModule, RouterModule,NavbarComponent],
+  imports: [SidebarComponent,CommonModule, NgbAccordionModule, NgbAlertModule, RouterModule,NavbarComponent],
   templateUrl: './maintenance-list.component.html',
   styleUrls: ['./maintenance-list.component.scss']
 })

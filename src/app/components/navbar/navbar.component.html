@@ -1,16 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark modern-navbar">
   <div class="container-fluid">
-    <!-- Logo avec animation -->
-    <a class="navbar-brand logo-container" routerLink="/dashboard">
-      <i class="bi bi-building logo-icon"></i>
-      <span class="logo-text">Mobly App</span>
-      <span class="logo-highlight"></span>
-    </a>
+    <!-- Logo avec informations établissement -->
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand logo-container" routerLink="/dashboard">
+        <i class="bi bi-building logo-icon"></i>
+        <span class="logo-text">GestFlotPro</span>
+        <span class="logo-highlight"></span>
+      </a>
+      
+      <!-- Informations établissement (visible sur desktop) -->
+      <div class="establishment-info d-none d-lg-block ms-4">
+        <div class="establishment-name">{{ establishment }}</div>
+        <div class="department-name">{{ department }}</div>
+      </div>
+    </div>
 
-    <!-- Bouton mobile stylisé -->
+    <!-- Bouton mobile -->
     <button class="navbar-toggler" type="button" 
-            data-bs-toggle="collapse" data-bs-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false">
+            (click)="toggleNavbar()"
+            [attr.aria-expanded]="!isCollapsed">
       <span class="navbar-toggler-animation">
         <span></span>
         <span></span>
@@ -19,9 +27,9 @@
     </button>
 
     <!-- Contenu du menu -->
-    <div class="collapse navbar-collapse" id="navbarContent">
+    <div class="navbar-collapse" [ngClass]="{ 'collapse': isCollapsed }" id="navbarContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- Liens avec effets -->
+        <!-- Dashboard -->
         <li class="nav-item">
           <a class="nav-link hover-effect" routerLink="/dashboard" routerLinkActive="active">
             <i class="bi bi-speedometer2 nav-icon"></i>
@@ -30,95 +38,43 @@
           </a>
         </li>
 
-        <li class="nav-item">
+        <!-- Engins -->
+        <!-- <li class="nav-item">
           <a class="nav-link hover-effect" routerLink="/engins" routerLinkActive="active">
             <i class="bi bi-truck nav-icon"></i>
             <span class="nav-text">Engins</span>
             <span class="nav-underline"></span>
           </a>
-        </li>
+        </li> -->
 
-        <li class="nav-item">
-          <a class="nav-link hover-effect" routerLink="/feuilles-route" routerLinkActive="active">
-            <i class="bi bi-clipboard-check nav-icon"></i>
-            <span class="nav-text">Feuilles de route</span>
-            <span class="nav-underline"></span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link hover-effect" routerLink="/maintenance" routerLinkActive="active">
-            <i class="bi bi-tools nav-icon"></i>
-            <span class="nav-text">Maintenance</span>
-            <span class="nav-underline"></span>
-          </a>
-        </li>
-
-        <!-- Menu déroulant amélioré -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle hover-effect" href="#" id="facturationDropdown" 
-             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-receipt nav-icon"></i>
-            <span class="nav-text">Facturation</span>
-            <span class="nav-underline"></span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-modern" aria-labelledby="facturationDropdown">
-            <li>
-              <a class="dropdown-item hover-effect" routerLink="/facturation/devis">
-                <i class="bi bi-file-earmark-text dropdown-icon"></i>
-                <span>Devis</span>
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item hover-effect" routerLink="/facturation/factures">
-                <i class="bi bi-file-earmark-check dropdown-icon"></i>
-                <span>Factures</span>
-              </a>
-            </li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-              <a class="dropdown-item hover-effect" routerLink="/facturation/statistiques">
-                <i class="bi bi-graph-up dropdown-icon"></i>
-                <span>Statistiques</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link hover-effect" routerLink="/suivi-gps" routerLinkActive="active">
-            <i class="bi bi-geo-alt nav-icon"></i>
-            <span class="nav-text">Suivi GPS</span>
-            <span class="nav-underline"></span>
-          </a>
-        </li>
+        <!-- Autres liens... -->
       </ul>
 
-      <!-- Section utilisateur améliorée -->
+      <!-- Section utilisateur -->
       <div class="d-flex user-section">
         <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle user-profile" href="#" id="userDropdown" 
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item dropdown" ngbDropdown>
+            <a class="nav-link dropdown-toggle user-profile" id="userDropdown" 
+               ngbDropdownToggle>
               <div class="user-avatar">
                 <i class="bi bi-person-circle"></i>
               </div>
               <div class="user-info">
-                <span class="user-name">{{ authService.getCurrentUser()?.nom || 'Utilisateur' }}</span>
-                <span class="user-role">Administrateur</span>
+                <span class="user-name">{{ userFullName }}</span>
+                <span class="user-role">{{ userRole }}</span>
               </div>
               <i class="bi bi-chevron-down user-dropdown-arrow"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-modern" aria-labelledby="userDropdown">
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-modern" ngbDropdownMenu aria-labelledby="userDropdown">
               <li>
-                <a class="dropdown-item hover-effect" routerLink="/parametres">
+                <a class="dropdown-item hover-effect" routerLink="/parametres" ngbDropdownItem>
                   <i class="bi bi-gear dropdown-icon"></i>
                   <span>Paramètres</span>
                 </a>
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
-                <a class="dropdown-item hover-effect" (click)="logout()">
+                <a class="dropdown-item hover-effect" (click)="logout()" ngbDropdownItem>
                   <i class="bi bi-box-arrow-right dropdown-icon"></i>
                   <span>Déconnexion</span>
                 </a>
@@ -127,6 +83,13 @@
           </li>
         </ul>
       </div>
+    </div>
+
+    <!-- Version mobile des infos établissement -->
+    <div class="mobile-establishment-info d-lg-none" *ngIf="!isCollapsed">
+      <div><strong>Établissement:</strong> {{ establishment }}</div>
+      <div><strong>Service:</strong> {{ department }}</div>
+      <div><strong>Utilisateur:</strong> {{ userFullName }}</div>
     </div>
   </div>
 </nav>

@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { Engin } from '../../../models/engin.model';
 import { NavbarComponent } from '../../../components/navbar/navbar.component';
+import { SidebarComponent } from '../../../components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-engin-list',
   standalone: true,
-  imports: [CommonModule, RouterModule,NavbarComponent],
+  imports: [CommonModule, RouterModule,NavbarComponent,SidebarComponent],
   templateUrl: './engin-list.component.html',
   styleUrls: ['./engin-list.component.scss']
 })

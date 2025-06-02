@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -18,6 +18,25 @@ export class NavbarComponent {
     public authService: AuthService,
     private router: Router
   ) {}
+isCollapsed = true;
+  scrolled = false;
+  
+  // Données dynamiques
+  establishment = 'Établissement A';
+  department = 'Service Manutention';
+  userFullName = 'Nom et Prénom XXXX XXX';
+  userRole = 'Administrateur';
+
+
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.scrolled = window.scrollY > 50;
+  }
+
+  toggleNavbar(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
 
   logout() {
     this.authService.logout();

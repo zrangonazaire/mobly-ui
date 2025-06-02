@@ -6,10 +6,11 @@ import { DataService } from '../../services/data.service';
 import { FormsModule } from '@angular/forms';
 import { Engin } from '../../models/engin.model';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule,NavbarComponent],
+  imports: [CommonModule, RouterModule, FormsModule,NavbarComponent,SidebarComponent],
   templateUrl: './engins.component.html',
   styleUrls: ['./engins.component.scss'],
   selector: 'app-engins',

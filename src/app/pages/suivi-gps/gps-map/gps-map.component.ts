@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { DataService } from '../../../services/data.service';
 import * as L from 'leaflet';
 import { NavbarComponent } from '../../../components/navbar/navbar.component';
+import { SidebarComponent } from '../../../components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-gps-map',
   standalone: true,
-  imports: [CommonModule,NavbarComponent],
+  imports: [CommonModule,NavbarComponent,SidebarComponent],
   templateUrl: './gps-map.component.html',
   styleUrls: ['./gps-map.component.scss']
 })
