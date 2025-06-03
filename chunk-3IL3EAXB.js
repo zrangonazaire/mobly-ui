@@ -1,0 +1,1 @@
+import{Qa as o,hb as t,ib as n,xb as i}from"./chunk-UGYL7J3V.js";var p=class s{static \u0275fac=function(e){return new(e||s)};static \u0275cmp=o({type:s,selectors:[["app-dossiers"]],decls:2,vars:0,template:function(e,a){e&1&&(t(0,"p"),i(1,"dossiers works!"),n())},encapsulation:2})};export{p as DossiersComponent};

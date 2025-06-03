@@ -1,1 +1,0 @@
-import{Qa as s,fb as i,gb as n,vb as o}from"./chunk-NW3OBQGS.js";var a=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=s({type:t,selectors:[["app-utilisateurs"]],decls:2,vars:0,template:function(e,r){e&1&&(i(0,"p"),o(1,"utilisateurs works!"),n())},encapsulation:2})};export{a as UtilisateursComponent};

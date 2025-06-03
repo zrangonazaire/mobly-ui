@@ -1,0 +1,1 @@
+import{Qa as n,hb as a,ib as r,xb as o}from"./chunk-UGYL7J3V.js";var p=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-carburant"]],decls:2,vars:0,template:function(e,s){e&1&&(a(0,"p"),o(1,"carburant works!"),r())},encapsulation:2})};export{p as CarburantComponent};
