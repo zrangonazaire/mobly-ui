@@ -1,95 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-dark modern-navbar">
+<header class="app-header bg-primary text-white py-2 shadow-sm">
   <div class="container-fluid">
-    <!-- Logo avec informations établissement -->
-    <div class="d-flex align-items-center">
-      <a class="navbar-brand logo-container" routerLink="/dashboard">
-        <i class="bi bi-building logo-icon"></i>
-        <span class="logo-text">GestFlotPro</span>
-        <span class="logo-highlight"></span>
-      </a>
-      
-      <!-- Informations établissement (visible sur desktop) -->
-      <div class="establishment-info d-none d-lg-block ms-4">
-        <div class="establishment-name">{{ establishment }}</div>
-        <div class="department-name">{{ department }}</div>
+    <div class="d-flex align-items-center justify-content-between">
+      <!-- Logo + Titre -->
+      <div class="d-flex align-items-center">
+        <!-- Logo réduit -->
+        <div class="logo-container me-3">
+          <img src="images/logo.png" 
+               alt="Logo établissement" 
+               class="logo-img rounded-circle">
+        </div>
+        
+        <!-- Titre de l'établissement -->
+        <h1 class="establishment-name mb-0">Etablissement A</h1>
       </div>
-    </div>
 
-    <!-- Bouton mobile -->
-    <button class="navbar-toggler" type="button" 
-            (click)="toggleNavbar()"
-            [attr.aria-expanded]="!isCollapsed">
-      <span class="navbar-toggler-animation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </button>
+      <!-- Contrôles utilisateur -->
+      <div class="user-controls d-flex align-items-center">
+        <!-- Sélecteur de service -->
+        <div class="service-selector me-3">
+          <select class="form-select form-select-sm bg-white text-dark" 
+                  [(ngModel)]="selectedService">
+            <option value="manutention">Service Manutention</option>
+            <option value="carburant">Service Carburant</option>
+          </select>
+        </div>
 
-    <!-- Contenu du menu -->
-    <div class="navbar-collapse" [ngClass]="{ 'collapse': isCollapsed }" id="navbarContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- Dashboard -->
-        <li class="nav-item">
-          <a class="nav-link hover-effect" routerLink="/dashboard" routerLinkActive="active">
-            <i class="bi bi-speedometer2 nav-icon"></i>
-            <span class="nav-text">Dashboard</span>
-            <span class="nav-underline"></span>
-          </a>
-        </li>
+        <!-- Info utilisateur -->
+        <div class="user-info me-3">
+          <span class="user-name">XXXX XXX</span>
+        </div>
 
-        <!-- Engins -->
-        <!-- <li class="nav-item">
-          <a class="nav-link hover-effect" routerLink="/engins" routerLinkActive="active">
-            <i class="bi bi-truck nav-icon"></i>
-            <span class="nav-text">Engins</span>
-            <span class="nav-underline"></span>
-          </a>
-        </li> -->
-
-        <!-- Autres liens... -->
-      </ul>
-
-      <!-- Section utilisateur -->
-      <div class="d-flex user-section">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown" ngbDropdown>
-            <a class="nav-link dropdown-toggle user-profile" id="userDropdown" 
-               ngbDropdownToggle>
-              <div class="user-avatar">
-                <i class="bi bi-person-circle"></i>
-              </div>
-              <div class="user-info">
-                <span class="user-name">{{ userFullName }}</span>
-                <span class="user-role">{{ userRole }}</span>
-              </div>
-              <i class="bi bi-chevron-down user-dropdown-arrow"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-modern" ngbDropdownMenu aria-labelledby="userDropdown">
-              <li>
-                <a class="dropdown-item hover-effect" routerLink="/parametres" ngbDropdownItem>
-                  <i class="bi bi-gear dropdown-icon"></i>
-                  <span>Paramètres</span>
-                </a>
-              </li>
-              <li><hr class="dropdown-divider"></li>
-              <li>
-                <a class="dropdown-item hover-effect" (click)="logout()" ngbDropdownItem>
-                  <i class="bi bi-box-arrow-right dropdown-icon"></i>
-                  <span>Déconnexion</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <!-- Menu profil -->
+        <div class="profile-menu">
+          <select class="form-select form-select-sm bg-white text-dark" 
+                  [(ngModel)]="selectedProfile">
+            <option value="profile">Profil</option>
+            <option value="parametres">Paramètres</option>
+            <option value="deconnexion">Déconnexion</option>
+          </select>
+        </div>
       </div>
-    </div>
-
-    <!-- Version mobile des infos établissement -->
-    <div class="mobile-establishment-info d-lg-none" *ngIf="!isCollapsed">
-      <div><strong>Établissement:</strong> {{ establishment }}</div>
-      <div><strong>Service:</strong> {{ department }}</div>
-      <div><strong>Utilisateur:</strong> {{ userFullName }}</div>
     </div>
   </div>
-</nav>
+</header>

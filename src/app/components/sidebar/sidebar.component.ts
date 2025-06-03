@@ -11,22 +11,22 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SidebarComponent {
   
-toggleSubmenu(event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
+// toggleSubmenu(event: Event) {
+//     event.preventDefault();
+//     event.stopPropagation();
     
-    const parentItem = (event.currentTarget as HTMLElement).closest('.menu-item');
-    if (!parentItem) return;
+//     const parentItem = (event.currentTarget as HTMLElement).closest('.menu-item');
+//     if (!parentItem) return;
 
-    // Fermer tous les autres sous-menus
-    const allSubmenus = document.querySelectorAll('.menu-item.has-submenu');
-    allSubmenus.forEach(item => {
-      if (item !== parentItem) {
-        item.classList.remove('expanded');
-      }
-    });
+//     // Fermer tous les autres sous-menus
+//     const allSubmenus = document.querySelectorAll('.menu-item.has-submenu');
+//     allSubmenus.forEach(item => {
+//       if (item !== parentItem) {
+//         item.classList.remove('expanded');
+//       }
+//     });
 
-    // Basculer l'état du sous-menu cliqué
-    parentItem.classList.toggle('expanded');
-  }
+//     // Basculer l'état du sous-menu cliqué
+//     parentItem.classList.toggle('expanded');
+//   }
 }

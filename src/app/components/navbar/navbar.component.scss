@@ -1,306 +1,66 @@
-/* Style général de la navbar */
-.modern-navbar {
-  background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
-}
-
-.modern-navbar.scrolled {
-  background: rgba(26, 35, 126, 0.95);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Logo */
-.logo-container {
+/* Style pour le header */
+.app-header {
   position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  overflow: hidden;
-  border-radius: 8px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.logo-icon {
-  font-size: 1.8rem;
-  color: #ffffff;
-  margin-right: 0.75rem;
-  transition: all 0.3s ease;
+/* Style du logo */
+.logo-container {
+  width: 50px;
+  height: 50px;
 }
 
-.logo-text {
-  font-weight: 700;
-  font-size: 1.4rem;
-  background: linear-gradient(to right, #ffffff, #e0e0e0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  letter-spacing: 0.5px;
-}
-
-.logo-highlight {
-  position: absolute;
-  top: 0;
-  left: -100%;
+.logo-img {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.5s;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.logo-container:hover .logo-highlight {
-  left: 100%;
+/* Style du titre */
+.establishment-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Bouton mobile */
-.navbar-toggler {
-  border: none;
-  padding: 0.5rem;
-}
-
-.navbar-toggler-animation {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 24px;
-  width: 30px;
-}
-
-.navbar-toggler-animation span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: white;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-animation span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-animation span:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-animation span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-
-/* Liens de navigation */
-.nav-link {
-  position: relative;
-  padding: 0.75rem 1.25rem;
-  margin: 0 0.25rem;
-  display: flex;
-  align-items: center;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.nav-icon {
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.nav-text {
-  position: relative;
-}
-
-.nav-underline {
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #4fc3f7;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover, .nav-link.active {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.nav-link:hover .nav-underline, .nav-link.active .nav-underline {
-  width: 100%;
-}
-
-.nav-link:hover .nav-icon, .nav-link.active .nav-icon {
-  color: #4fc3f7;
-  transform: scale(1.1);
-}
-
-/* Menus déroulants */
-.dropdown-menu-modern {
-  background: rgba(33, 43, 128, 0.95);
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.dropdown-item {
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  margin: 0.15rem 0;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-}
-
-.dropdown-icon {
-  margin-right: 0.75rem;
-  font-size: 1rem;
-}
-
-.dropdown-item:hover, .dropdown-item:focus {
-  background: linear-gradient(135deg, #4fc3f7 0%, #2196f3 100%);
-  color: white;
-  transform: translateX(5px);
-}
-
-.dropdown-divider {
-  border-color: rgba(255, 255, 255, 0.1);
-  margin: 0.5rem 0;
-}
-
-/* Section utilisateur */
-.user-section {
-  margin-left: 1rem;
-}
-
-.user-profile {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.user-profile:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.user-avatar {
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.75rem;
-  font-size: 1.2rem;
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-  margin-right: 0.75rem;
+/* Style des contrôles utilisateur */
+.user-controls {
+  gap: 1rem;
 }
 
 .user-name {
   font-weight: 500;
-  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
 
-.user-role {
-  font-size: 0.7rem;
-  opacity: 0.8;
+/* Style des selects */
+.form-select-sm {
+  min-width: 150px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
-.user-dropdown-arrow {
-  font-size: 0.8rem;
-  transition: transform 0.3s ease;
-}
-
-.show .user-dropdown-arrow {
-  transform: rotate(180deg);
-}
-
-/* Animation hover générale */
-.hover-effect {
-  position: relative;
-  overflow: hidden;
-}
-
-.hover-effect::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-  z-index: -1;
-}
-
-.hover-effect:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+.form-select-sm:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
 }
 
 /* Responsive */
-@media (max-width: 992px) {
-  .navbar-collapse {
-    background: rgba(26, 35, 126, 0.98);
-    padding: 1rem;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    margin-top: 0.5rem;
+@media (max-width: 768px) {
+  .establishment-name {
+    font-size: 1.2rem;
   }
   
-  .nav-item {
-    margin-bottom: 0.5rem;
+  .user-controls {
+    gap: 0.5rem;
   }
   
-  .user-section {
-    margin-left: 0;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
-/* Styles pour les informations établissement */
-.establishment-info {
-  color: white;
-  padding-left: 1rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.establishment-name {
-  font-weight: 600;
-  font-size: 0.95rem;
-  line-height: 1.2;
-}
-
-.department-name {
-  font-size: 0.8rem;
-  opacity: 0.9;
-  font-weight: 400;
-}
-
-/* Version mobile pour les infos établissement */
-.mobile-establishment-info {
-  display: none;
-  padding: 0.5rem 1rem;
-  color: white;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 0.5rem;
-}
-
-@media (max-width: 992px) {
-  .establishment-info {
-    display: none;
-  }
-  
-  .mobile-establishment-info {
-    display: block;
+  .form-select-sm {
+    min-width: 120px;
   }
 }

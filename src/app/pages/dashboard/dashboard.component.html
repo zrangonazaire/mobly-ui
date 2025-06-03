@@ -1,105 +1,66 @@
 <app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
-<div class="container-fluid mt-3">
-  <h2>Tableau de bord</h2>  
-  <div class="row mb-4">
-    <div class="col-md-4 mb-3">
-      <div class="card text-white bg-primary h-100">
-        <div class="card-body">
-          <h5 class="card-title">Engins disponibles</h5>
-          <h2 class="card-text">{{ stats.enginsDisponibles }}</h2>
+<div class="grid-container">
+  <app-navbar class="navbar"></app-navbar>
+  <app-sidebar class="sidebar"></app-sidebar>
+  <main class="main">
+   <div class="dashboard-container">
+  <h1>Tableau de Bord des Engins</h1>
+  
+  <div class="widgets-grid">
+    <!-- Widgets de disponibilité -->
+    <div class="widget">
+      <app-availability-gauge 
+        title="Disponibilité administrative" 
+        [value]="(adminAvailability$ | async) || 0">
+      </app-availability-gauge>
+    </div>
+    
+    <div class="widget">
+      <app-availability-gauge 
+        title="Disponibilité mécanique" 
+        [value]="(mechanicalAvailability$ | async) || 0">
+      </app-availability-gauge>
+    </div>
+    
+    <!-- Widget engins 100% disponibles -->
+    <div class="widget">
+      <div class="widget-content">
+        <h3>Engins 100% disponibles</h3>
+        <div *ngIf="fullAvailability$ | async as data" class="full-availability">
+          <div class="total">{{ data.total }}</div>
+          <ul>
+            <li *ngFor="let item of data.list">{{ item }}</li>
+          </ul>
         </div>
       </div>
     </div>
     
-    <div class="col-md-4 mb-3">
-      <div class="card text-white bg-success h-100">
-        <div class="card-body">
-          <h5 class="card-title">Engins en mission</h5>
-          <h2 class="card-text">{{ stats.enginsEnMission }}</h2>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-md-4 mb-3">
-      <div class="card text-white bg-warning h-100">
-        <div class="card-body">
-          <h5 class="card-title">Engins en maintenance</h5>
-          <!-- <h2 class="card-text">{{ stats.enginsEnMaintenance }}</h2> -->
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-8">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h5>Dernières feuilles de route</h5>
-        </div>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Engin</th>
-                <th>Date départ</th>
-                <th>Statut</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let feuille of recentFeuillesRoute">
-                <td>{{ feuille.id }}</td>
-                <td>Engin #{{ feuille.enginId }}</td>
-                <td>{{ feuille.dateDepart | date:'dd/MM/yyyy HH:mm' }}</td>
-                <td>
-                  <span [ngClass]="{
-                    'badge bg-primary': feuille.statut === 'planifiee',
-                    'badge bg-success': feuille.statut === 'en cours',
-                    'badge bg-secondary': feuille.statut === 'terminee',
-                    'badge bg-danger': feuille.statut === 'annulee'
-                  }">
-                    {{ feuille.statut }}
-                  </span>
-                </td>
-                <td>
-                  <a [routerLink]="['/feuilles-route', feuille.id]" class="btn btn-sm btn-info">Détails</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h5>Consommation moyenne</h5>
-        </div>
-        <div class="card-body">
-          <h3>{{ stats.consommationMoyenne }} L/100km</h3>
-          <ngb-progressbar type="success" [value]="stats.consommationMoyenne * 5" [max]="100"></ngb-progressbar>
-          <small>Objectif: 12 L/100km</small>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header bg-danger text-white">
-          <h5>Alertes</h5>
-        </div>
-        <div class="card-body">
-          <div *ngIf="stats.alertes > 0; else noAlert" class="alert alert-warning">
-            {{ stats.alertes }} alertes à traiter
+    <!-- Widget engins en alerte -->
+    <div class="widget">
+      <div class="widget-content">
+        <h3>Engins en alerte ou bloqués</h3>
+        <div *ngIf="alertEquipment$ | async as equipment" class="alert-list">
+          <div *ngFor="let item of equipment" class="alert-item">
+            <span class="status-badge" [class.alert]="item.status === 'Alerte'"
+                                 [class.blocked]="item.status === 'Bloqué'">
+              {{ item.status }}
+            </span>
+            <a [href]="item.link">{{ item.id }}</a>
           </div>
-          <ng-template #noAlert>
-            <div class="alert alert-success">
-              Aucune alerte en cours
-            </div>
-          </ng-template>
         </div>
       </div>
     </div>
+    
+    <!-- Widget courbe historique -->
+    <div class="widget wide-widget">
+      <app-historical-chart [data]="(historicalData$ | async) || {}"></app-historical-chart>
+    </div>
+    
+    <!-- Widget documents à renouveler -->
+    <div class="widget">
+      <!-- <app-document-alerts [documents]="(documentsToRenew$ | async) || []"></app-document-alerts> -->
+    </div>
   </div>
+</div>
+  </main>
 </div>
