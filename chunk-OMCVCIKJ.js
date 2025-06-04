@@ -1,1 +1,0 @@
-import{Qa as n,hb as o,ib as i,xb as a}from"./chunk-UGYL7J3V.js";var p=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-audit"]],decls:2,vars:0,template:function(e,m){e&1&&(o(0,"p"),a(1,"audit works!"),i())},encapsulation:2})};export{p as AuditComponent};
